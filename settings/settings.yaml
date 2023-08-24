@@ -1,0 +1,48 @@
+defaults:
+  - model: CLM_CoTNG
+  - data: PYTHON
+
+tasks: [ "fit" ]
+
+trainer:
+  max_epochs: 8
+  gpus: 1
+  patience: 3
+  min_delta: 0.03
+  gradient_clip_val: 1.0
+
+
+
+
+log:
+  dir: resource/log/
+
+model_checkpoint:
+  dir: resource/model_checkpoint/
+
+ranking:
+  dir: resource/ranking/
+
+attention:
+  dir: resource/attention
+  sample_id: 0
+
+prediction:
+  dir: resource/prediction/${model.name}_${data.name}/
+  fold: 0
+  write_interval: batch
+
+tsne:
+  dir: resource/tsne/${model.name}_${data.name}/
+  fold_id: 0
+
+result:
+  dir: resource/result/
+
+
+
+
+
+
+
+
