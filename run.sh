@@ -4,11 +4,6 @@ export PYTHONPATH=$PATHONPATH:~/projects/UniXcoder/
 
 python main.py \
   tasks=[fit,predict,eval] \
-  model=UNIX \
-  data=PYTHON
-
-python main.py \
-  tasks=[fit,predict,eval] \
-  model=UNIX \
-  data=JAVASCRIPT
-
+  model=CodeBERT \
+  data=PYTHON \
+  data.folds=[0,1,2,3,4]

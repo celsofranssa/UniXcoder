@@ -7,9 +7,10 @@ from transformers import AutoTokenizer
 from source.DataModule.DescCodeModule import DescCodeDataModule
 from source.callback.PredictionWriter import PredictionWriter
 from source.model.UniXModel import UniXModel
+from source.model.xCoFormerModel import xCoFormerModel
 
 
-class PredictHelper:
+class xCoFormerPredictHelper:
 
     def __init__(self, params):
         self.params = params
@@ -23,7 +24,7 @@ class PredictHelper:
                 fold=fold)
 
             # model
-            model = UniXModel.load_from_checkpoint(
+            model = xCoFormerModel.load_from_checkpoint(
                 checkpoint_path=f"{self.params.model_checkpoint.dir}{self.params.model.name}_{self.params.data.name}_{fold}.ckpt"
             )
 

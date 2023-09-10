@@ -3,16 +3,16 @@ import pickle
 import pytorch_lightning as pl
 from torch.utils.data import DataLoader
 
-from source.Dataset.UniXEncoderDataset import UniXEncoderDataset
+from source.Dataset.DescCodeDataset import UniXEncoderDataset
 
 
-class UniXEncoderDataModule(pl.LightningDataModule):
+class DescCodeDataModule(pl.LightningDataModule):
     """
     CodeSearch DataModule
     """
 
     def __init__(self, params, tokenizer, fold):
-        super(UniXEncoderDataModule, self).__init__()
+        super(DescCodeDataModule, self).__init__()
         self.params = params
         self.tokenizer = tokenizer
         self.fold = fold

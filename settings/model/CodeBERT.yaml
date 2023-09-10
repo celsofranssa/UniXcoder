@@ -1,0 +1,28 @@
+name: CodeBERT
+
+desc_encoder:
+  _target_: source.encoder.STDEncoder.STDEncoder
+  architecture: microsoft/codebert-base
+
+code_encoder:
+  _target_: source.encoder.STDEncoder.STDEncoder
+  architecture: microsoft/codebert-base
+
+hidden_size: 768
+
+tokenizer:
+  architecture: ${model.desc_encoder.architecture}
+
+
+desc_frequency_opt: 1
+code_frequency_opt: 1
+
+
+lr: 1e-5
+
+
+loss:
+  _target_: source.loss.NPairLoss.NPairLoss
+  params:
+    name: NPairLoss
+    scale: 20

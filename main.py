@@ -2,17 +2,27 @@ import hydra
 import os
 from omegaconf import OmegaConf
 from source.helper.EvalHelper import EvalHelper
-from source.helper.ExplainHelper import ExplainHelper
 from source.helper.FitHelper import FitHelper
 from source.helper.PredictHelper import PredictHelper
+from source.helper.xCoFormerFitHelper import xCoFormerFitHelper
+from source.helper.xCoFormerPredictHelper import xCoFormerPredictHelper
+
 
 def fit(params):
-    fit_helper = FitHelper(params)
-    fit_helper.perform_fit()
+    if params.model.name in ["xCoFormer", "RoBERTa", "BERT", "CodeBERT"]:
+        helper = xCoFormerFitHelper(params)
+    elif params.model.name == "UNIX":
+        helper = FitHelper(params)
+    helper.perform_fit()
+
 
 def predict(params):
-    predict_helper = PredictHelper(params)
-    predict_helper.perform_predict()
+    if params.model.name in ["xCoFormer", "RoBERTa", "BERT", "CodeBERT"]:
+        helper = xCoFormerPredictHelper(params)
+    elif params.model.name == "UNIX":
+        helper = PredictHelper(params)
+    helper.perform_predict()
+
 
 def eval(params):
     eval_helper = EvalHelper(params)

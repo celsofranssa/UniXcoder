@@ -5,12 +5,10 @@ from pytorch_lightning.callbacks import ModelCheckpoint, EarlyStopping
 from transformers import AutoTokenizer
 
 from source.DataModule.DescCodeModule import DescCodeDataModule
-from source.model.BiEncoderModel import BiEncoderModel
-
-from source.model.UniXModel import UniXModel
+from source.model.xCoFormerModel import xCoFormerModel
 
 
-class FitHelper:
+class xCoFormerFitHelper:
 
     def __init__(self, params):
         self.params = params
@@ -38,7 +36,7 @@ class FitHelper:
                 fold=fold)
 
             # model
-            model = UniXModel(self.params.model)
+            model = xCoFormerModel(self.params.model)
 
             # Train the ⚡ model
             print(

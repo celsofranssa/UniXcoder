@@ -10,6 +10,7 @@ trainer:
   patience: 3
   min_delta: 0.03
   gradient_clip_val: 1.0
+  progress_bar_refresh_rate: 10
 
 
 

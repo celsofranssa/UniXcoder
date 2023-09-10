@@ -16,4 +16,8 @@ class CrossEntropyLoss(nn.Module):
 
     def forward(self, desc_repr, code_repr):
         scores = torch.einsum("ab,cb->ac", desc_repr, code_repr)
-        return self.criterion(scores * 20, torch.arange(self.params.batch_size, device=scores.device))
+        return self.criterion(
+            scores * 20,
+            torch.arange(desc_repr.size(0),
+            device=scores.device)
+        )
