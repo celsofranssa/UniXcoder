@@ -5,7 +5,6 @@ from pytorch_lightning.callbacks import ModelCheckpoint, EarlyStopping
 from transformers import AutoTokenizer
 
 from source.DataModule.DescCodeModule import DescCodeDataModule
-from source.model.BiEncoderModel import BiEncoderModel
 
 from source.model.UniXModel import UniXModel
 
